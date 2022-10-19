@@ -142,8 +142,10 @@
     <ClCompile Include="difusa.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="5.1.transform.fs" />
-    <None Include="5.1.transform.vs" />
+    <None Include="shaderAsiento.fs" />
+    <None Include="shader1.vs" />
+    <None Include="shaderRana.fs" />
+    <None Include="shaderTira.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />

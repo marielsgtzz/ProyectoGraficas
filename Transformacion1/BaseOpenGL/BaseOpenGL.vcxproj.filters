@@ -23,12 +23,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="5.1.transform.vs">
+    <None Include="shader1.vs">
       <Filter>Archivos de origen</Filter>
     </None>
-    <None Include="5.1.transform.fs">
+    <None Include="shaderAsiento.fs">
       <Filter>Archivos de origen</Filter>
     </None>
+    <None Include="shaderTira.fs" />
+    <None Include="shaderRana.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">

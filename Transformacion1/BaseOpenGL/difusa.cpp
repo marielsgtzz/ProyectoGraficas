@@ -33,75 +33,164 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("5.1.transform.vs", "5.1.transform.fs");
+    Shader shader1("shader1.vs", "shaderTira.fs");
+    Shader shader2("shader1.vs", "shaderAsiento.fs");
+    Shader shader3("shader1.vs", "shaderRana.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-    float vertices[] = {
-        // positions          // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,   1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   0.0f, 1.0f  // top left 
+    float verticesTiras[] = {
+        0.4f, 0.4f, 0.0f, // centro del fan
+        0.1f, 0.24f, 0.0f,
+        0.085f, 0.225f, 0.0f,
+        0.07f, 0.234f, 0.0f,
+        0.065f, 0.24f, 0.0f,
+        0.055f, 0.26f, 0.0f,
+        0.05f, 0.28f, 0.0f,
+        0.046f, 0.3f, 0.0f,
+        0.044f, 0.32f, 0.0f,
+        0.045f, 0.35f, 0.0f,
+        0.05f, 0.4f, 0.0f,
+        0.055f, 0.44f, 0.0f,
+        0.067f, 0.49f, 0.0f,
+        0.09f, 0.55f, 0.0f,
+        0.15f, 0.65f, 0.0f,
+        0.25f, 0.746f, 0.0f,
+        0.3f, 0.773f, 0.0f,
+        0.35f, 0.79f, 0.0f,
+        0.4f, 0.8f, 0.0f,
+        0.45f, 0.8f, 0.0f,
+        0.5f, 0.795f, 0.0f,
+        0.55f, 0.783f, 0.0f,
+        0.6f, 0.757f, 0.0f,
+        0.66f, 0.72f, 0.0f, // mitad 23
+        0.757f, 0.6f, 0.0f,
+        0.783f, 0.55f, 0.0f,
+        0.795f, 0.5f, 0.0f,
+        0.8f, 0.45f, 0.0f,
+        0.8f, 0.4f, 0.0f,
+        0.79f, 0.35f, 0.0f,
+        0.773f, 0.3f, 0.0f,
+        0.746f, 0.25f, 0.0f,
+        0.65f, 0.15f, 0.0f,
+        0.55f, 0.09f, 0.0f,
+        0.49f, 0.067f, 0.0f,
+        0.44f, 0.055f, 0.0f,
+        0.4f, 0.05f, 0.0f,
+        0.35f, 0.045f, 0.0f,
+        0.32f, 0.044f, 0.0f,
+        0.3f, 0.046f, 0.0f,
+        0.28f, 0.05f, 0.0f,
+        0.26f, 0.055f, 0.0f,
+        0.24f, 0.065f, 0.0f,
+        0.234f, 0.07f, 0.0f,
+        0.225f, 0.085f, 0.0f,
+        0.24f, 0.1f, 0.0f
     };
-    unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
+
+    //Asiento
+    float verticesCirculo1[] = {
+        0.4f, 0.4f, 0.0f, // centro del fan
+        0.15f, 0.15f, 0.0f,
+        0.13f, 0.175f, 0.0f,
+        0.115f, 0.2f, 0.0f,
+        0.105f, 0.23f, 0.0f,
+        0.1f, 0.26f, 0.0f,
+        0.1f, 0.28f, 0.0f,
+        0.1f, 0.34f, 0.0f,
+        0.105f, 0.37f, 0.0f,
+        0.12f, 0.42f, 0.0f,
+        0.15f, 0.5f, 0.0f,
+        0.2f, 0.59f, 0.0f,
+        0.25f, 0.645f, 0.0f,
+        0.3f, 0.685f, 0.0f,
+        0.35f, 0.71f, 0.0f,
+        0.4f, 0.722f, 0.0f,
+        0.45f, 0.72f, 0.0f,
+        0.5f, 0.71f, 0.0f,
+        0.55f, 0.69f, 0.0,
+        0.6f, 0.65f, 0.0, // mitad 20
+        0.65f, 0.6f, 0.0f,
+        0.69f, 0.55f, 0.0,
+        0.71f, 0.5f, 0.0f,
+        0.72f, 0.45f, 0.0f,
+        0.722f, 0.4f, 0.0f,
+        0.71f, 0.35f, 0.0f,
+        0.685f, 0.3f, 0.0f,
+        0.645f, 0.25f, 0.0f,
+        0.59f, 0.2f, 0.0f,
+        0.5f, 0.15f, 0.0f,
+        0.42f, 0.12f, 0.0f,
+        0.37f, 0.105f, 0.0f,
+        0.34f, 0.1f, 0.0f,
+        0.28f, 0.1f, 0.0f,
+        0.26f, 0.1f, 0.0f,
+        0.23f, 0.105f, 0.0f,
+        0.2f, 0.115f, 0.0f,
+        0.175f, 0.13f, 0.0f,
+        0.15f, 0.15f, 0.0f
     };
-    unsigned int VBO, VAO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
 
-    glBindVertexArray(VAO);
+    //Ranas
+    float indicesRanas[] = {
+        0.26f, 0.26f, 0.0f, // centro del fan
+        0.21f, 0.29f, 0.0f,
+        0.207f, 0.3f, 0.0f,
+        0.205f, 0.33f, 0.0f,
+        0.206f, 0.37f, 0.0f,
+        0.207f, 0.39f, 0.0f,
+        0.222f, 0.42f, 0.0f,
+        0.26f, 0.465f, 0.0f,
+        0.31f, 0.498f, 0.0f,
+        0.33f, 0.482f, 0.0f,
+        0.34f, 0.46f, 0.0f,
+        0.39f, 0.5f, 0.0f,
+        0.41f, 0.51f, 0.0f,
+        0.47f, 0.524f, 0.0f,
+        0.5f, 0.521f, 0.0f,
+        0.51f, 0.515f, 0.0f, //mitad 16
+        0.521f, 0.5f, 0.0f,
+        0.524f, 0.47f, 0.0f,
+        0.51f, 0.41f, 0.0f,
+        0.5f, 0.39f, 0.0f,
+        0.46f, 0.34f, 0.0f,
+        0.482f, 0.33f, 0.0f,
+        0.498f, 0.31f, 0.0f,
+        0.465f, 0.26f, 0.0f,
+        0.42f, 0.222f, 0.0f,
+        0.39f, 0.207f, 0.0f,
+        0.37f, 0.206f, 0.0f,
+        0.33f, 0.205f, 0.0f,
+        0.3f, 0.207f, 0.0f,
+        0.29f, 0.21f, 0.0f,
+    };
+    unsigned int VBOs[100], VAOs[100], EBO[100];
+    glGenVertexArrays(100, VAOs); 
+    glGenBuffers(100, VBOs);
+    glGenBuffers(100, EBO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    // Tira
+    glBindVertexArray(VAOs[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesTiras), verticesTiras, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
     glEnableVertexAttribArray(0);
-    // texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
 
+    // Asiento
+    glBindVertexArray(VAOs[1]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesCirculo1), verticesCirculo1, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
 
-    // load and create a texture 
-    // -------------------------
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    // set the texture wrapping parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // set texture filtering parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load image, create texture and generate mipmaps
-    int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-    //unsigned char* data = stbi_load("C:/Users/MGUTIERRZA/Desktop/Iluminacion/Dependencies/Imagenes/container.jpg", &width, &height, &nrChannels, 0);
-    unsigned char* data = stbi_load("C:/Users/MGUTIERRZA/Desktop/Iluminacion/Dependencies/Imagenes/container.jpg", &width, &height, &nrChannels, 0);
-    //"C:/Users/wpere/Desktop/Wilmer/ITAM/Docencia/Grafica/Librerias/images/Fachada.jpg"
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        printf("Failed to load texture\n");
-    }
-    stbi_image_free(data);
+    // Rana 
+    glBindVertexArray(VAOs[2]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[2]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(indicesRanas), indicesRanas, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
 
-    // tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
-    // -------------------------------------------------------------------------------------------
-    ourShader.use();
-    ourShader.setInt("texture", 0);
-
+    
     while (!glfwWindowShouldClose(window))
     {
         // input
@@ -110,37 +199,108 @@ int main()
 
         // render
         // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(1.0f, 1.0f, 0.8f, 1.0f); //Fondo color quartz
         glClear(GL_COLOR_BUFFER_BIT);
-
-        // bind textures on corresponding texture units
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture);
-
 
         glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         // first container
         // ---------------
-        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-        // get their uniform location and set matrix (using glm::value_ptr)
-        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        //TIRAS
+            shader1.use();
+            shader1.setInt("texture", 0);
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            // get their uniform location and set matrix (using glm::value_ptr)
+            unsigned int transformLoc = glGetUniformLocation(shader1.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
-        // with the uniform matrix set, draw the first container
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            // with the uniform matrix set, draw the first container
+            glBindVertexArray(VAOs[0]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
 
-        // second transformation
-        // ---------------------
-        transform = glm::mat4(1.0f); // reset it to identity matrix
-        transform = glm::translate(transform, glm::vec3(-0.5f, -0.5f, 0.0f));
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            // 2nd transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
 
-        // now with the uniform matrix being replaced with new transformations, draw it again.
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            // now with the uniform matrix being replaced with new transformations, draw it again.
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
 
+            // 3th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
+
+            // 4th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
+
+        //ASIENTO
+            shader2.use();
+            shader2.setInt("texture2", 1);
+            transform = glm::translate(transform, glm::vec3(0.8f, 0.8f, 0.0f));
+            // get their uniform location and set matrix (using glm::value_ptr)
+            transformLoc = glGetUniformLocation(shader2.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[1]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
+
+            // 2nd transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
+
+            // 3th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
+
+            // 4th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
+
+        //RANAS
+            shader3.use();
+            shader3.setInt("texture3", 2);
+            transform = glm::translate(transform, glm::vec3(0.8f, 0.8f, 0.0f));
+            // get their uniform location and set matrix (using glm::value_ptr)
+            transformLoc = glGetUniformLocation(shader3.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[2]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            // 2nd transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            // 3th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            // 4th transformation
+            // ---------------------
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
@@ -148,9 +308,9 @@ int main()
     }
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+    glDeleteVertexArrays(1, VAOs);
+    glDeleteBuffers(1, VBOs);
+    glDeleteBuffers(1, EBO);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------

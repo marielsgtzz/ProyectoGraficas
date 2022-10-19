@@ -220,7 +220,8 @@ int main()
             // 2nd transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
 
             // now with the uniform matrix being replaced with new transformations, draw it again.
@@ -229,21 +230,24 @@ int main()
             // 3th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
 
             // 4th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 46);
 
         //ASIENTO
             shader2.use();
             shader2.setInt("texture2", 1);
-            transform = glm::translate(transform, glm::vec3(0.8f, 0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             // get their uniform location and set matrix (using glm::value_ptr)
             transformLoc = glGetUniformLocation(shader2.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -253,28 +257,33 @@ int main()
             // 2nd transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
+
 
             // 3th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
 
             // 4th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
 
         //RANAS
             shader3.use();
             shader3.setInt("texture3", 2);
-            transform = glm::translate(transform, glm::vec3(0.8f, 0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             // get their uniform location and set matrix (using glm::value_ptr)
             transformLoc = glGetUniformLocation(shader3.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -284,21 +293,24 @@ int main()
             // 2nd transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(0.0f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
 
             // 3th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, 0.0f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
 
             // 4th transformation
             // ---------------------
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            transform = glm::translate(transform, glm::vec3(-0.8f, -0.8f, 0.0f));
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)

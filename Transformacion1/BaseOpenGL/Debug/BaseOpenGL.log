@@ -1,0 +1,3 @@
+﻿  difusa.cpp
+C:\Users\MGUTIERRZA\Desktop\Iluminacion\Dependencies\shaders\shader_s.h(43,40): warning C4101: 'e': variable local sin referencia
+  BaseOpenGL.vcxproj -> C:\Users\MGUTIERRZA\Desktop\Iluminacion\Debug\BaseOpenGL.exe

@@ -142,8 +142,11 @@
     <ClCompile Include="difusa.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader2.vs" />
     <None Include="shaderAsiento.fs" />
     <None Include="shader1.vs" />
+    <None Include="shaderEsquina.fs" />
+    <None Include="shaderFondo.fs" />
     <None Include="shaderRana.fs" />
     <None Include="shaderTira.fs" />
   </ItemGroup>

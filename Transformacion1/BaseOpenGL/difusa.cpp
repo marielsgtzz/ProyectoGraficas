@@ -37,8 +37,33 @@ int main()
     Shader shader2("shader1.vs", "shaderAsiento.fs");
     Shader shader3("shader1.vs", "shaderRana.fs");
 
+
+    Shader shader5("shader2.vs", "shaderEsquina.fs");
+    Shader shader6("shader1.vs", "shaderFondo.fs");
+    Shader shader7("shader1.vs", "shaderEsquina.fs");
+
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
+    //Esquinas fondo
+    float verticesEsquinas[] = {
+        -1.0f, 1.0f, 0.0f,      0.0f, 0.0f, 0.0f,        0.0f, 0.5f,
+        -1.0f, 0.4f, 0.0f,      0.0f, 0.0f, 0.0f,        0.5f, 0.0f,
+        -0.4f, 1.0f, 0.0f,      0.0f, 0.0f, 0.0f,        0.0f, 0.0f,
+    };
+
+    //Triangulos fondo
+    float verticesFondo[] = {
+        -1.0f, 0.4f, 0.0f,
+        -0.4f, 1.0f, 0.0f,
+         0.0f, 0.0f, 0.0f,
+    };
+
+    float verticesFondo2[] = {
+        0.0f, 0.0f, 0.0f,
+        -0.4f, 1.0f, 0.0f,
+         0.4f, 1.0f, 0.0f,
+    };
+
     float verticesTiras[] = {
         0.4f, 0.4f, 0.0f, // centro del fan
         0.1f, 0.24f, 0.0f,
@@ -164,6 +189,8 @@ int main()
         0.3f, 0.207f, 0.0f,
         0.29f, 0.21f, 0.0f,
     };
+    
+
     unsigned int VBOs[100], VAOs[100], EBO[100];
     glGenVertexArrays(100, VAOs); 
     glGenBuffers(100, VBOs);
@@ -190,6 +217,59 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
     glEnableVertexAttribArray(0);
 
+    //Esquina
+    glBindVertexArray(VAOs[5]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[5]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesEsquinas), verticesEsquinas, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+        
+    //Fondo
+    glBindVertexArray(VAOs[6]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[6]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesFondo), verticesFondo, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+    
+    glBindVertexArray(VAOs[7]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[7]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesFondo2), verticesFondo2, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+    
+    // load and create a texture 
+    // -------------------------
+
+    unsigned int texture1;
+    glGenTextures(1, &texture1);
+    glBindTexture(GL_TEXTURE_2D, texture1); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set texture filtering parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load image, create texture and generate mipmaps
+    int width, height, nrChannels;
+    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    unsigned char* data = stbi_load("C:/Users/MGUTIERRZA/Desktop/ProyectoGraficas/Transformacion1/Dependencies/Imagenes/granito.jpg", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data);
+
     
     while (!glfwWindowShouldClose(window))
     {
@@ -202,15 +282,115 @@ int main()
         glClearColor(1.0f, 1.0f, 0.8f, 1.0f); //Fondo color quartz
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+
         glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        unsigned int transformLoc;
         // first container
         // ---------------
+        // 
+
+        // ESQUINAS
+        shader5.use();
+        shader5.setInt("texture1", 0);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader5.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[5]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Fondo - triangulos
+        shader6.use();
+        shader6.setInt("texture6", 6);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader6.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[6]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Triangulos 2
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[7]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
         //TIRAS
             shader1.use();
             shader1.setInt("texture", 0);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
             transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             // get their uniform location and set matrix (using glm::value_ptr)
-            unsigned int transformLoc = glGetUniformLocation(shader1.ID, "transform");
+            transformLoc = glGetUniformLocation(shader1.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
             // with the uniform matrix set, draw the first container
@@ -313,6 +493,8 @@ int main()
             transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);

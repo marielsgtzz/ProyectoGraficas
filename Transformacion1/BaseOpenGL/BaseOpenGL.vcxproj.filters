@@ -31,6 +31,9 @@
     </None>
     <None Include="shaderTira.fs" />
     <None Include="shaderRana.fs" />
+    <None Include="shaderEsquina.fs" />
+    <None Include="shaderFondo.fs" />
+    <None Include="shader2.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">

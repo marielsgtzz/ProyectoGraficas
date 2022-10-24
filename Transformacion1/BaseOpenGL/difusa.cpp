@@ -36,6 +36,8 @@ int main()
     Shader shader1("shader1.vs", "shaderTira.fs");
     Shader shader2("shader1.vs", "shaderAsiento.fs");
     Shader shader3("shader1.vs", "shaderRana.fs");
+    Shader shader4("shader1.vs", "shaderZanahoria.fs");
+    Shader shader5("shader1.vs", "shaderCentro.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -164,6 +166,110 @@ int main()
         0.3f, 0.207f, 0.0f,
         0.29f, 0.21f, 0.0f,
     };
+    
+    //Zanahorias
+    float indicesZanahorias[] = {
+        0.0f, 0.75f, 0.0f, // centro de fan
+        0.0f, 0.987f, 0.0f,
+        0.02f, 0.98f, 0.0f,
+        0.035f, 0.97f, 0.0f,
+        0.05f, 0.95f, 0.0f,
+        0.071f, 0.9f, 0.0f,
+        0.07f, 0.85f, 0.0f,
+        0.067f, 0.8f, 0.0f,
+        0.062f, 0.75f, 0.0f,
+        0.05f, 0.65f, 0.0f,
+        0.029f, 0.5f, 0.0f,
+        0.02f, 0.46f, 0.0f,
+        0.015f, 0.44f, 0.0f,
+        0.01f, 0.43f, 0.0f,
+        0.0f, 0.425f, 0.0f, // mitad
+        -0.015f, 0.44f, 0.0f,
+        -0.02f, 0.46f, 0.0f,
+        -0.029f, 0.5f, 0.0f,
+        -0.05f, 0.65f, 0.0f,
+        -0.062f, 0.75f, 0.0f,
+        -0.067f, 0.8f, 0.0f,
+        -0.07f, 0.85f, 0.0f,
+        -0.071f, 0.9f, 0.0f,
+        -0.05f, 0.95f, 0.0f,
+        -0.035f, 0.97f, 0.0f,
+        -0.02f, 0.98f, 0.0f,
+        0.0f, 0.987f, 0.0f,
+    };
+
+    // Centro 1
+    float indicesCentro1[] = {
+        0.0f, 0.0f, 0.0f, // centro de fan
+        0.0f, 0.15f, 0.0f,
+        0.04f, 0.1445f, 0.0f,
+        0.08f, 0.127f, 0.0f,
+        0.1f, 0.112f, 0.0f,
+        0.12f, 0.09f, 0.0f,
+        0.14f, 0.054f, 0.0f,
+        0.1487f, 0.02f, 0.0f,
+        0.15f, 0.0f, 0.0f, // 1/4 
+        0.1487f, -0.02f, 0.0f,
+        0.14f, -0.054f, 0.0f,
+        0.12f, -0.09f, 0.0f,
+        0.1f, -0.112f, 0.0f,
+        0.08f, -0.127f, 0.0f,
+        0.04f, -0.1445f, 0.0f,
+        0.0f, -0.15f, 0.0f, // 1/2
+        -0.04f, -0.1445f, 0.0f,
+        -0.08f, -0.127f, 0.0f,
+        -0.1f, -0.112f, 0.0f,
+        -0.12f, -0.09f, 0.0f,
+        -0.14f, -0.054f, 0.0f,
+        -0.1487f, -0.02f, 0.0f,
+        -0.15f, 0.0f, 0.0f, // 3/4 
+        -0.1487f, 0.02f, 0.0f,
+        -0.14f, 0.054f, 0.0f,
+        -0.12f, 0.09f, 0.0f,
+        -0.1f, 0.112f, 0.0f,
+        -0.08f, 0.127f, 0.0f,
+        -0.04f, 0.1445f, 0.0f,
+        0.0f, 0.15f, 0.0f
+    };
+
+    // Centro 2
+    float indicesCentro2[] = {
+        0.0f, 0.0f, 0.0f, // centro de fan
+        0.0f, 0.08f, 0.0f,
+        0.01f, 0.0793f, 0.0f,
+        0.03f, 0.074f, 0.0f,
+        0.05f, 0.0625f, 0.0f,
+        0.065f, 0.0465f, 0.0f,
+        0.0742f, 0.03f, 0.0f,
+        0.07935f, 0.01f, 0.0f,
+        0.0781f, 0.017f, 0.0f,
+        0.08f, 0.0f, 0.0f, // 1/4
+        0.0781f, -0.017f, 0.0f,
+        0.07935f, -0.01f, 0.0f,
+        0.0742f, -0.03f, 0.0f,
+        0.065f, -0.0465f, 0.0f,
+        0.05f, -0.0625f, 0.0f,
+        0.03f, -0.074f, 0.0f,
+        0.01f, -0.0793f, 0.0f,
+        0.0f, -0.08f, 0.0f, // 1/2
+        -0.01f, -0.0793f, 0.0f,
+        -0.03f, -0.074f, 0.0f,
+        -0.05f, -0.0625f, 0.0f,
+        -0.065f, -0.0465f, 0.0f,
+        -0.0742f, -0.03f, 0.0f,
+        -0.07935f, -0.01f, 0.0f,
+        -0.0781f, -0.017f, 0.0f,
+        -0.08f, 0.0f, 0.0f, // 3/4
+        -0.0781f, 0.017f, 0.0f,
+        -0.07935f, 0.01f, 0.0f,
+        -0.0742f, 0.03f, 0.0f,
+        -0.065f, 0.0465f, 0.0f,
+        -0.05f, 0.0625f, 0.0f,
+        -0.03f, 0.074f, 0.0f,
+        -0.01f, 0.0793f, 0.0f,
+        0.0f, 0.08f, 0.0f
+    };
+    
     unsigned int VBOs[100], VAOs[100], EBO[100];
     glGenVertexArrays(100, VAOs); 
     glGenBuffers(100, VBOs);
@@ -190,6 +296,27 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
     glEnableVertexAttribArray(0);
 
+    // Zanahoria 
+    glBindVertexArray(VAOs[3]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[3]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(indicesZanahorias), indicesZanahorias, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+
+    //CIRCULOS
+    // 1 
+    glBindVertexArray(VAOs[4]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[4]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(indicesCentro1), indicesCentro1, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // 2 
+    glBindVertexArray(VAOs[5]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[5]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(indicesCentro2), indicesCentro2, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
     
     while (!glfwWindowShouldClose(window))
     {
@@ -313,6 +440,55 @@ int main()
             transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+        
+         //ZANAHORIAS
+            shader4.use();
+            shader4.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader4.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[3]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+            //2nd
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);            
+           
+            // 3th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+            
+            // 4th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+
+        //Centro
+            shader5.use();
+            shader5.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader5.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[4]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            shader2.use();
+            shader2.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader2.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[5]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);

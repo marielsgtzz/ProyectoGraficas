@@ -144,8 +144,10 @@
   <ItemGroup>
     <None Include="shaderAsiento.fs" />
     <None Include="shader1.vs" />
+    <None Include="shaderCentro.fs" />
     <None Include="shaderRana.fs" />
     <None Include="shaderTira.fs" />
+    <None Include="shaderZanahoria.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="difusa.cpp">
+    <ClCompile Include="proyecto.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\Dependencies\GLAD\src\glad.c">
@@ -31,14 +31,10 @@
     </None>
     <None Include="shaderTira.fs" />
     <None Include="shaderRana.fs" />
-<<<<<<< HEAD
-    <None Include="shaderEsquina.fs" />
-    <None Include="shaderFondo.fs" />
-    <None Include="shader2.vs" />
-=======
     <None Include="shaderZanahoria.fs" />
     <None Include="shaderCentro.fs" />
->>>>>>> main
+    <None Include="shaderFondo.fs" />
+    <None Include="shaderEsquina.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">

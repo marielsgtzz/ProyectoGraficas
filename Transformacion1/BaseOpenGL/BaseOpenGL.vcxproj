@@ -145,10 +145,15 @@
     <None Include="shader2.vs" />
     <None Include="shaderAsiento.fs" />
     <None Include="shader1.vs" />
+<<<<<<< HEAD
     <None Include="shaderEsquina.fs" />
     <None Include="shaderFondo.fs" />
+=======
+    <None Include="shaderCentro.fs" />
+>>>>>>> main
     <None Include="shaderRana.fs" />
     <None Include="shaderTira.fs" />
+    <None Include="shaderZanahoria.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />

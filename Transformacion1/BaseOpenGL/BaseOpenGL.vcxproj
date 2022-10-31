@@ -142,14 +142,14 @@
     <ClCompile Include="proyecto.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaderAsiento.fs" />
-    <None Include="shader1.vs" />
-    <None Include="shaderCentro.fs" />
-    <None Include="shaderFondo.fs" />
-    <None Include="shaderEsquina.fs" />
-    <None Include="shaderRana.fs" />
-    <None Include="shaderTira.fs" />
-    <None Include="shaderZanahoria.fs" />
+    <None Include="Shaders\shaderAsiento.fs" />
+    <None Include="Shaders\shader1.vs" />
+    <None Include="Shaders\shaderCentro.fs" />
+    <None Include="Shaders\shaderFondo.fs" />
+    <None Include="Shaders\shaderEsquina.fs" />
+    <None Include="Shaders\shaderRana.fs" />
+    <None Include="Shaders\shaderTira.fs" />
+    <None Include="Shaders\shaderZanahoria.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />

@@ -1,5 +1,9 @@
 ﻿  proyecto.cpp
 C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\Dependencies\shaders\shader_s.h(43,40): warning C4101: 'e': variable local sin referencia
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(395,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(428,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(393,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(426,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(458,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(491,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(523,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\BaseOpenGL\proyecto.cpp(587,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   BaseOpenGL.vcxproj -> C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\Transformacion1\Debug\BaseOpenGL.exe

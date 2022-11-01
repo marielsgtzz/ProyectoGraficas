@@ -275,7 +275,6 @@ int main()
     };
     
     //Esquinas fondo
-
     float verticesEsquinas[] = {
         -1.0f, 1.6f, 0.0f,
         -1.0f, 1.0f, 0.0f,
@@ -283,18 +282,11 @@ int main()
     };
 
     //Triangulos fondo
-
     float verticesFondo[] = {
         -2.0f, 1.4f, 0.0f,
         -1.4f, 2.0f, 0.0f,
          -1.0f, 1.0f, 0.0f,
     };
-
-    //float verticesFondo2[] = {
-    //    0.0f, 0.0f, 0.0f,
-    //    -0.4f, 1.0f, 0.0f,
-    //     0.4f, 1.0f, 0.0f,
-    //};
 
     float verticesFondo2[] = {
        0.0f, 1.0f, 0.0f,
@@ -371,7 +363,7 @@ int main()
     glEnableVertexAttribArray(0);
 
 
-    float inc = 0;
+    float inc = 0.0;
     while (!glfwWindowShouldClose(window))
     {
         // input
@@ -390,7 +382,7 @@ int main()
             shader6.use();
             shader6.setInt("texture", 0);
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            inc = inc + 0.0001;
+            inc = inc + 0.005;
             transform = glm::translate(transform, glm::vec3(0.0f, -1.0f * inc, 0.0f));
             transformLoc = glGetUniformLocation(shader6.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -423,7 +415,7 @@ int main()
             shader7.use();
             shader7.setInt("texture7", 7);
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            inc = inc + 0.0000001;
+            inc = inc + 0.005;
             transform = glm::translate(transform, glm::vec3(1.0f * inc, -1.0f * inc, 0.0f));
             transformLoc = glGetUniformLocation(shader7.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -455,7 +447,6 @@ int main()
             shader6.use();
             shader6.setInt("texture", 0);
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            inc = inc + 0.0001;
             transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
             transformLoc = glGetUniformLocation(shader6.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -488,7 +479,7 @@ int main()
             shader7.use();
             shader7.setInt("texture7", 7);
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            inc = inc + 0.0000001;
+            inc = inc + 0.005;
             transform = glm::translate(transform, glm::vec3(0.0f * inc, -0.8f * inc, 0.0f));
             transformLoc = glGetUniformLocation(shader7.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -579,12 +570,553 @@ int main()
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
-        else {
+        else if (inc >= 1.25 && inc < 2.4) {
+        
             // ESQUINAS
             shader6.use();
             shader6.setInt("texture", 0);
             transform = glm::mat4(1.0f); // reset it to identity matrix
-            inc = inc + 0.0001;
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+            transformLoc = glGetUniformLocation(shader6.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[6]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //2nd
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //3th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //4th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //Fondo - triangulos
+            shader7.use();
+            shader7.setInt("texture7", 7);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+            transformLoc = glGetUniformLocation(shader7.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[7]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //2nd
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //3th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //4th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            ////Triangulos 2
+            shader7.use();
+            shader7.setInt("texture7", 7);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+            transformLoc = glGetUniformLocation(shader7.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[8]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //2nd
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //3th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //4th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            //Centro
+            shader5.use();
+            shader5.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader5.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[4]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            shader7.use();
+            shader7.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader2.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[5]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+
+            //ZANAHORIAS
+            shader4.use();
+            shader4.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            inc = inc + 0.007;
+            transform = glm::translate(transform, glm::vec3(0.0f, 1.45f, 0.0f));
+            transform = glm::translate(transform, glm::vec3(0.0f * inc, -0.6f * inc, 0.0f));
+            transformLoc = glGetUniformLocation(shader4.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[3]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+        }
+        else if (inc >= 2.4 && inc < 3.32) {
+
+        // ESQUINAS
+        shader6.use();
+        shader6.setInt("texture", 0);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        transformLoc = glGetUniformLocation(shader6.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[6]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Fondo - triangulos
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[7]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        ////Triangulos 2
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[8]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Centro
+        shader5.use();
+        shader5.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader5.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[4]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+        shader7.use();
+        shader7.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader2.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[5]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+
+        //ZANAHORIAS
+        shader4.use();
+        shader4.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader4.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[3]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+        
+
+        // 4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        inc = inc + 0.007;
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 2.0f, 0.0f));
+        transform = glm::translate(transform, glm::vec3(0.0f * inc, -0.6f * inc, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+        }
+        else if (inc >= 3.32 && inc < 4.18) {
+
+        // ESQUINAS
+        shader6.use();
+        shader6.setInt("texture", 0);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        transformLoc = glGetUniformLocation(shader6.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[6]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Fondo - triangulos
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[7]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        ////Triangulos 2
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[8]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Centro
+        shader5.use();
+        shader5.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader5.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[4]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+        shader7.use();
+        shader7.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader2.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[5]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+
+        //ZANAHORIAS
+        shader4.use();
+        shader4.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader4.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[3]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+        // 4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        inc = inc + 0.007;
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 2.5f, 0.0f));
+        transform = glm::translate(transform, glm::vec3(0.0f * inc, -0.6f * inc, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+
+        }
+        else if (inc >= 4.18 && inc < 4.65) {
+
+        // ESQUINAS
+        shader6.use();
+        shader6.setInt("texture", 0);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        transformLoc = glGetUniformLocation(shader6.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[6]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Fondo - triangulos
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[7]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(1.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        ////Triangulos 2
+        shader7.use();
+        shader7.setInt("texture7", 7);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        transformLoc = glGetUniformLocation(shader7.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[8]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, -1.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        //Centro
+        shader5.use();
+        shader5.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader5.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[4]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+        shader7.use();
+        shader7.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader2.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[5]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+
+        //ZANAHORIAS
+        shader4.use();
+        shader4.setInt("texture3", 2);
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transformLoc = glGetUniformLocation(shader4.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        glBindVertexArray(VAOs[3]);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+        // 4th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+        //2nd
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+
+        // 3th
+        transform = glm::mat4(1.0f); // reset it to identity matrix
+        inc = inc + 0.007;
+        transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        transform = glm::translate(transform, glm::vec3(0.0f, 2.8f, 0.0f));
+        transform = glm::translate(transform, glm::vec3(0.0f * inc, -0.6f * inc, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+        }
+else {
+            // ESQUINAS
+            shader6.use();
+            shader6.setInt("texture", 0);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
             transform = glm::translate(transform, glm::vec3(0.0f, -0.6f, 0.0f));
             transformLoc = glGetUniformLocation(shader6.ID, "transform");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
@@ -674,6 +1206,54 @@ int main()
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
             glDrawArrays(GL_TRIANGLES, 0, 3);
 
+            //Centro
+            shader5.use();
+            shader5.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader5.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[4]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+
+            shader7.use();
+            shader7.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader2.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[5]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+             
+            //ZANAHORIAS
+            shader4.use();
+            shader4.setInt("texture3", 2);
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transformLoc = glGetUniformLocation(shader4.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+            glBindVertexArray(VAOs[3]);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+            //2nd
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+            // 3th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+            // 4th
+            transform = glm::mat4(1.0f); // reset it to identity matrix
+            transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
+            transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
+            glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+
+            
 
             ////TIRAS
             //shader1.use();
@@ -785,53 +1365,9 @@ int main()
             //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
             //glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
 
-            ////ZANAHORIAS
-            //shader4.use();
-            //shader4.setInt("texture3", 2);
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transformLoc = glGetUniformLocation(shader4.ID, "transform");
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-            //glBindVertexArray(VAOs[3]);
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
+            
 
-            ////2nd
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transform = glm::rotate(transform, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
-            //transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
-
-            //// 3th
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
-            //transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
-
-            //// 4th
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transform = glm::rotate(transform, glm::radians(270.0f), glm::vec3(0.0, 0.0, 1.0));
-            //transform = glm::translate(transform, glm::vec3(0.0f, 0.0f, 0.0f));
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]); // this time take the matrix value array's first element as its memory pointer value
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 27);
-
-
-            ////Centro
-            //shader5.use();
-            //shader5.setInt("texture3", 2);
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transformLoc = glGetUniformLocation(shader5.ID, "transform");
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-            //glBindVertexArray(VAOs[4]);
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
-
-            //shader2.use();
-            //shader2.setInt("texture3", 2);
-            //transform = glm::mat4(1.0f); // reset it to identity matrix
-            //transformLoc = glGetUniformLocation(shader2.ID, "transform");
-            //glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-            //glBindVertexArray(VAOs[5]);
-            //glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
+            
 
         }
         // first container

@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -139,21 +139,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\GLAD\src\glad.c" />
-    <ClCompile Include="ImGUI\imgui.cpp" />
-    <ClCompile Include="ImGUI\imgui_demo.cpp" />
-    <ClCompile Include="ImGUI\imgui_draw.cpp" />
-    <ClCompile Include="ImGUI\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="proyecto.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
-    <ClInclude Include="ImGUI\imconfig.h" />
-    <ClInclude Include="ImGUI\imgui.h" />
-    <ClInclude Include="ImGUI\imgui_impl_glfw_gl3.h" />
-    <ClInclude Include="ImGUI\imgui_internal.h" />
-    <ClInclude Include="ImGUI\stb_rect_pack.h" />
-    <ClInclude Include="ImGUI\stb_textedit.h" />
-    <ClInclude Include="ImGUI\stb_truetype.h" />
     <ClInclude Include="shader_s.h" />
   </ItemGroup>
   <ItemGroup>

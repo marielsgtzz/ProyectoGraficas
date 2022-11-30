@@ -1,0 +1,5 @@
+The normal is just the cross product of any two edges in your triangle.
+
+Given a tri with points P1, P2 and P3... the cross product can be calculated as
+ P3-P1 cross P1-P2
+ if you are using right handed axis orientation.

@@ -554,7 +554,7 @@ int main()
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
         {
             
-            ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
+            ImGui::SetNextWindowPos(ImVec2(1.0f, -1.0f));
             ImGui::Begin("Controles");                          
 
             ImGui::Text("w - avanzar camara \n"); 

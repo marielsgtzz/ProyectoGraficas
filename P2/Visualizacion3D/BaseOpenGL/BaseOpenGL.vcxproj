@@ -157,8 +157,10 @@
     <ClInclude Include="shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="2.2.light_cube.vs" />
     <None Include="Shaders\2.2.basic_lighting.fs" />
     <None Include="Shaders\2.2.basic_lighting.vs" />
+    <None Include="Shaders\2.2.light_cube.fs" />
     <None Include="Shaders\7.3.camera.vs" />
     <None Include="Shaders\7.3.camera.fs" />
   </ItemGroup>

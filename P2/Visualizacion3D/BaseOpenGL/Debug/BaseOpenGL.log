@@ -1,12 +1,11 @@
 ﻿  proyecto.cpp
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\Dependencies\shaders\shader_s.h(43,40): warning C4101: 'e': variable local sin referencia
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(232,28): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(306,23): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(332,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(333,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(337,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(338,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(339,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(340,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\Dependencies\shaders\shader_s.h(56,40): warning C4101: 'e': variable local sin referencia
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(278,5): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(316,28): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(470,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(471,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(475,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(476,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(478,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\BaseOpenGL\proyecto.cpp(479,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   BaseOpenGL.vcxproj -> C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2\Visualizacion3D\Debug\BaseOpenGL.exe

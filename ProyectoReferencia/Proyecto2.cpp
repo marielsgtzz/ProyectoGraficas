@@ -532,21 +532,6 @@ int main()
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
-        // Menu para el usuario
-        // w - avanzar camara
-        // s - retroceder camara
-        // d - ir  la derecha camara
-        // a - ir  la izquierda camara
-        // e - cerrar ventana
-
-        // I - avanzar luz
-        // K - retroceder luz
-        // J - ir  la derecha luz
-        // L - ir  la izquierda luz
-        // o - elevar luz
-        // u - bajar luz
-
-        // Start the Dear ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();

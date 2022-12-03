@@ -164,50 +164,51 @@ int main()
         -10.0f, -10.0f,  10.0f,
         -10.0f, -10.0f, -10.0f,
     };
+
     float verticesRanas[] = {
-        -0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.2f,  0.2f, -0.2f,
-         0.2f,  0.2f, -0.2f,
-        -0.2f,  0.2f, -0.2f,
-        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+         0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+         0.2f,  0.2f, -0.2f, 0.0f, 0.0f, -1.0f,
+         0.2f,  0.2f, -0.2f, 0.0f, 0.0f, -1.0f,
+        -0.2f,  0.2f, -0.2f, 0.0f, 0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.2f,  0.2f,  0.2f,
-         0.2f,  0.2f,  0.2f,
-        -0.2f,  0.2f,  0.2f,
-        -0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,0.0f, 0.0f, 1.0f,
+         0.2f,  0.2f,  0.2f,0.0f, 0.0f, 1.0f,
+         0.2f,  0.2f,  0.2f,0.0f, 0.0f, 1.0f,
+        -0.2f,  0.2f,  0.2f,0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,0.0f, 0.0f, 1.0f,
 
-        -0.2f,  0.2f,  0.2f,
-        -0.2f,  0.2f, -0.2f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.2f,  0.2f,  0.2f,
+        -0.2f,  0.2f,  0.2f, -1.0f, 0.0f, 0.0f,
+        -0.2f,  0.2f, -0.2f,-1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,-1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,-1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,-1.0f, 0.0f, 0.0f,
+        -0.2f,  0.2f,  0.2f,-1.0f, 0.0f, 0.0f,
 
-         0.2f,  0.2f,  0.2f,
-         0.2f,  0.2f, -0.2f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.2f,  0.2f,  0.2f,
+         0.2f,  0.2f,  0.2f, 1.0f, 0.0f, 0.0f,
+         0.2f,  0.2f, -0.2f,1.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,1.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,1.0f, 0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,1.0f, 0.0f, 0.0f,
+         0.2f,  0.2f,  0.2f,1.0f, 0.0f, 0.0f,
 
          // abajo
-        -0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,0.0f, -1.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,0.0f, -1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,0.0f, -1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,0.0f, -1.0f, 0.0f,
 
         // arriba
-        -0.2f,  0.2f, -0.2f,
-         0.2f,  0.2f, -0.2f,
-         0.2f,  0.2f,  0.2f,
-         0.2f,  0.2f,  0.2f,
-        -0.2f,  0.2f,  0.2f,
-        -0.2f,  0.2f, -0.2f,
+        -0.2f,  0.2f, -0.2f,  0.0f, 1.0f, 0.0f,
+         0.2f,  0.2f, -0.2f, 0.0f, 1.0f, 0.0f,
+         0.2f,  0.2f,  0.2f, 0.0f, 1.0f, 0.0f,
+         0.2f,  0.2f,  0.2f, 0.0f, 1.0f, 0.0f,
+        -0.2f,  0.2f,  0.2f, 0.0f, 1.0f, 0.0f,
+        -0.2f,  0.2f, -0.2f, 0.0f, 1.0f, 0.0f,
     };
     float verticesEsquinas[]{
         -1.75f, -1.75f, -1.75f,
@@ -409,8 +410,11 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesRanas), verticesRanas, GL_STATIC_DRAW);
     glBindVertexArray(VAO1);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
 
     // 2
     unsigned int VBO2, VAO2;
@@ -419,8 +423,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO2);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesRanas), verticesRanas, GL_STATIC_DRAW);
     glBindVertexArray(VAO2);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 3
     unsigned int VBO3, VAO3;
@@ -429,8 +435,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO3);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesRanas), verticesRanas, GL_STATIC_DRAW);
     glBindVertexArray(VAO3);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 4
     unsigned int VBO4, VAO4;
@@ -439,8 +447,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO4);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesRanas), verticesRanas, GL_STATIC_DRAW);
     glBindVertexArray(VAO4);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // ESQUINAS
     // 1
@@ -649,58 +659,62 @@ int main()
         glBindVertexArray(VAOs);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        glm::mat4 transform;
-        unsigned int transformLoc;
 
 
         // RANAS
-        // 1
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+       // 1
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("posRana1", posRana1);
+        lightingShader.setVec3("viewPos", camera.Position);
+
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
+        // world transformation
         model = glm::mat4(1.0f);
         model = glm::translate(model, posRana1);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
+        // render cube
         glBindVertexArray(VAO1);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 2
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posRana2);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO2);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 3
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posRana3);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO3);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 4
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posRana4);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO4);
         glDrawArrays(GL_TRIANGLES, 0, 36);
+
 
         // ESQUINAS
         // 1
@@ -898,18 +912,14 @@ int main()
         view = camera.GetViewMatrix();
         lightingShader.setMat4("projection", projection);
         lightingShader.setMat4("view", view);
-
         // world transformation
         model = glm::mat4(1.0f);
         lightingShader.setMat4("model", model);
-
-
         // render cube
         glBindVertexArray(cubeVAO);
         // calculate the model matrix for each object and pass it to shader before drawing
         model = glm::mat4(1.0f);
         lightingShader.setMat4("model", model);
-
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // also draw the lamp object(s)

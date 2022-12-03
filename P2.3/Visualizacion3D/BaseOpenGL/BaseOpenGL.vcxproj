@@ -164,6 +164,14 @@
     <None Include="Shaders\2.2.light_cube.vs" />
     <None Include="Shaders\7.3.camera.vs" />
     <None Include="Shaders\7.3.camera.fs" />
+    <None Include="Shaders\shader1.vs" />
+    <None Include="Shaders\shaderAsiento.fs" />
+    <None Include="Shaders\shaderCentro.fs" />
+    <None Include="Shaders\shaderEsquina.fs" />
+    <None Include="Shaders\shaderFondo.fs" />
+    <None Include="Shaders\shaderRana.fs" />
+    <None Include="Shaders\shaderTira.fs" />
+    <None Include="Shaders\shaderZanahoria.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

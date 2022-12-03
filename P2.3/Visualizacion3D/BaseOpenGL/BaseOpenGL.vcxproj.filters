@@ -81,7 +81,5 @@
     <None Include="Shaders\shaderCentro.fs" />
     <None Include="Shaders\shaderEsquina.fs" />
     <None Include="Shaders\shaderFondo.fs" />
-    <None Include="Shaders\1.colors.fs" />
-    <None Include="Shaders\1.colors.vs" />
   </ItemGroup>
 </Project>

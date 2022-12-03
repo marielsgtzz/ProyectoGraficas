@@ -146,7 +146,7 @@ int main()
          0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
          0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
     };
     
     // posicion de los 2 focos estaticos
@@ -157,14 +157,13 @@ int main()
 
     float verticesSuelo[]{
         // abajo
-        -10.0f, -10.0f, -10.0f,
-         10.0f, -10.0f, -10.0f,
-         10.0f, -10.0f,  10.0f,
-         10.0f, -10.0f,  10.0f,
-        -10.0f, -10.0f,  10.0f,
-        -10.0f, -10.0f, -10.0f,
+        -10.0f, -10.0f, -10.0f,  0.0f, 1.0f, 0.0f,
+         10.0f, -10.0f, -10.0f, 0.0f, 1.0f, 0.0f,
+         10.0f, -10.0f,  10.0f, 0.0f, 1.0f, 0.0f,
+         10.0f, -10.0f,  10.0f, 0.0f, 1.0f, 0.0f,
+        -10.0f, -10.0f,  10.0f, 0.0f, 1.0f, 0.0f,
+        -10.0f, -10.0f, -10.0f, 0.0f, 1.0f, 0.0f,
     };
-
     float verticesRanas[] = {
         -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
          0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
@@ -256,49 +255,49 @@ int main()
         -0.4f,  0.4f, -0.4f,
     };
     float verticesAsientos[]{
-        -0.3f, -0.3f, -0.3f,
-         0.3f, -0.3f, -0.3f,
-         0.8f,  0.8f, -0.8f,
-         0.8f,  0.8f, -0.8f,
-        -0.8f,  0.8f, -0.8f,
-        -0.3f, -0.3f, -0.3f,
+        -0.3f, -0.3f, -0.3f,0.0f,  0.0f, -1.0f,
+         0.3f, -0.3f, -0.3f,0.0f,  0.0f, -1.0f,
+         0.8f,  0.8f, -0.8f,0.0f,  0.0f, -1.0f,
+         0.8f,  0.8f, -0.8f,0.0f,  0.0f, -1.0f,
+        -0.8f,  0.8f, -0.8f,0.0f,  0.0f, -1.0f,
+        -0.3f, -0.3f, -0.3f,0.0f,  0.0f, -1.0f,
 
-        -0.3f, -0.3f,  0.3f,
-         0.3f, -0.3f,  0.3f,
-         0.8f,  0.8f,  0.8f,
-         0.8f,  0.8f,  0.8f,
-        -0.8f,  0.8f,  0.8f,
-        -0.3f, -0.3f, 0.3f,
+        -0.3f, -0.3f,  0.3f,0.0f,  0.0f,  1.0f,
+         0.3f, -0.3f,  0.3f,0.0f,  0.0f,  1.0f,
+         0.8f,  0.8f,  0.8f,0.0f,  0.0f,  1.0f,
+         0.8f,  0.8f,  0.8f,0.0f,  0.0f,  1.0f,
+        -0.8f,  0.8f,  0.8f,0.0f,  0.0f,  1.0f,
+        -0.3f, -0.3f, 0.3f,0.0f,  0.0f,  1.0f,
 
-        -0.8f,  0.8f,  0.8f,
-        -0.8f,  0.8f, -0.8f,
-        -0.3f, -0.3f, -0.3f,
-        -0.3f, -0.3f, -0.3f,
-        -0.3f, -0.3f, 0.3f,
-        -0.8f,  0.8f,  0.8f,
+        -0.8f,  0.8f,  0.8f,-1.0f,  0.0f,  0.0f,
+        -0.8f,  0.8f, -0.8f,-1.0f,  0.0f,  0.0f,
+        -0.3f, -0.3f, -0.3f,-1.0f,  0.0f,  0.0f,
+        -0.3f, -0.3f, -0.3f,-1.0f,  0.0f,  0.0f,
+        -0.3f, -0.3f, 0.3f,-1.0f,  0.0f,  0.0f,
+        -0.8f,  0.8f,  0.8f,-1.0f,  0.0f,  0.0f,
 
-         0.8f,  0.8f,  0.8f,
-         0.8f,  0.8f, -0.8f,
-         0.3f, -0.3f, -0.3f,
-         0.3f, -0.3f, -0.3f,
-         0.3f, -0.3f,  0.3f,
-         0.8f,  0.8f,  0.8f,
+         0.8f,  0.8f,  0.8f,1.0f,  0.0f,  0.0f,
+         0.8f,  0.8f, -0.8f,1.0f,  0.0f,  0.0f,
+         0.3f, -0.3f, -0.3f,1.0f,  0.0f,  0.0f,
+         0.3f, -0.3f, -0.3f,1.0f,  0.0f,  0.0f,
+         0.3f, -0.3f,  0.3f,1.0f,  0.0f,  0.0f,
+         0.8f,  0.8f,  0.8f,1.0f,  0.0f,  0.0f,
 
          // abajo
-        -0.3f, -0.3f, -0.3f,
-         0.3f, -0.3f, -0.3f,
-         0.3f, -0.3f,  0.3f,
-         0.3f, -0.3f,  0.3f,
-        -0.3f, -0.3f,  0.3f,
-        -0.3f, -0.3f, -0.3f,
+        -0.3f, -0.3f, -0.3f,  0.0f, -1.0f,  0.0f,
+         0.3f, -0.3f, -0.3f,  0.0f, -1.0f,  0.0f,
+         0.3f, -0.3f,  0.3f,  0.0f, -1.0f,  0.0f,
+         0.3f, -0.3f,  0.3f,  0.0f, -1.0f,  0.0f,
+        -0.3f, -0.3f,  0.3f,  0.0f, -1.0f,  0.0f,
+        -0.3f, -0.3f, -0.3f,  0.0f, -1.0f,  0.0f,
 
         // arriba
-        -0.8f,  0.8f, -0.8f,
-         0.8f,  0.8f, -0.8f,
-         0.8f,  0.8f,  0.8f,
-         0.8f,  0.8f,  0.8f,
-        -0.8f,  0.8f,  0.8f,
-        -0.8f,  0.8f, -0.8f,
+        -0.8f,  0.8f, -0.8f,0.0f,  1.0f,  0.0f,
+         0.8f,  0.8f, -0.8f,0.0f,  1.0f,  0.0f,
+         0.8f,  0.8f,  0.8f,0.0f,  1.0f,  0.0f,
+         0.8f,  0.8f,  0.8f,0.0f,  1.0f,  0.0f,
+        -0.8f,  0.8f,  0.8f,0.0f,  1.0f,  0.0f,
+        -0.8f,  0.8f, -0.8f, 0.0f,  1.0f,  0.0f,
     };
     float verticesZanahorias1[] = {
         -1.5f, -0.2f, -0.2f,
@@ -399,8 +398,10 @@ int main()
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesSuelo), verticesSuelo, GL_STATIC_DRAW);
     glBindVertexArray(VAOs);
     // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // RANAS
    // 1
@@ -501,8 +502,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO9);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAsientos), verticesAsientos, GL_STATIC_DRAW);
     glBindVertexArray(VAO9);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 2
     unsigned int VBO10, VAO10;
@@ -511,8 +514,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO10);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAsientos), verticesAsientos, GL_STATIC_DRAW);
     glBindVertexArray(VAO10);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 3
     unsigned int VBO11, VAO11;
@@ -521,8 +526,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO11);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAsientos), verticesAsientos, GL_STATIC_DRAW);
     glBindVertexArray(VAO11);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 4
     unsigned int VBO12, VAO12;
@@ -531,8 +538,10 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO12);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesAsientos), verticesAsientos, GL_STATIC_DRAW);
     glBindVertexArray(VAO12);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // ZANAHORIAS
     // 1
@@ -642,23 +651,22 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         //PISO
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 1.0f, 1.0f, 0.8f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 1.0f, 1.0f, 0.8f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         // view/projection transformations
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         // world transformation
         glm::mat4 model;
         model = glm::mat4(1.0f);
         model = glm::translate(model, posPiso);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         // render the cube
         glBindVertexArray(VAOs);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-
 
 
         // RANAS
@@ -767,50 +775,50 @@ int main()
 
         // ASIENTOS
         // 1
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posAsiento1);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO9);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 2
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posAsiento2);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO10);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 3
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posAsiento3);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO11);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // 4
-        lightingShaderObj.use();
-        lightingShaderObj.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShaderObj.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShaderObj.setMat4("projection", projection);
-        lightingShaderObj.setMat4("view", view);
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
         model = glm::mat4(1.0f);
         model = glm::translate(model, posAsiento4);
-        lightingShaderObj.setMat4("model", model);
+        lightingShader.setMat4("model", model);
         glBindVertexArray(VAO12);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -857,7 +865,6 @@ int main()
         lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         lightingShader.setVec3("lightPos", lightPos);
         lightingShader.setVec3("viewPos", camera.Position);
-
 
         /*
            Here we set all the uniforms for the 5/6 types of lights we have. We have to set them manually and index
@@ -912,15 +919,6 @@ int main()
         view = camera.GetViewMatrix();
         lightingShader.setMat4("projection", projection);
         lightingShader.setMat4("view", view);
-        // world transformation
-        model = glm::mat4(1.0f);
-        lightingShader.setMat4("model", model);
-        // render cube
-        glBindVertexArray(cubeVAO);
-        // calculate the model matrix for each object and pass it to shader before drawing
-        model = glm::mat4(1.0f);
-        lightingShader.setMat4("model", model);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // also draw the lamp object(s)
         //REFLECTOR MOVIBLE

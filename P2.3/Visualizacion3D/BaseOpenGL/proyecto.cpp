@@ -832,8 +832,8 @@ int main()
             lightingShader.setMat4("view", view);
             model = glm::mat4(1.0f);
             model = glm::translate(model, posEsquina1);
-            model = glm::translate(model, glm::vec3(1.0f, -7.0f, 0.0f));
-            model = glm::translate(model, glm::vec3(1.0f, 7.0f*inc, 0.0f));
+            model = glm::translate(model, glm::vec3(0.5f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(0.5f, 7.0f*inc, 0.0f));
             lightingShader.setMat4("model", model);
             glBindVertexArray(VAO5);
             glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -846,8 +846,8 @@ int main()
             lightingShader.setMat4("view", view);
             model = glm::mat4(1.0f);
             model = glm::translate(model, posEsquina2);
-            model = glm::translate(model, glm::vec3(-1.0f, -7.0f, 0.0f));
-            model = glm::translate(model, glm::vec3(-1.0f, 7.0f * inc, 0.0f));
+            model = glm::translate(model, glm::vec3(-0.5f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(-0.5f, 7.0f * inc, 0.0f));
             //model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
             lightingShader.setMat4("model", model);
             glBindVertexArray(VAO6);
@@ -861,8 +861,8 @@ int main()
             lightingShader.setMat4("view", view);
             model = glm::mat4(1.0f);
             model = glm::translate(model, posEsquina3);
-            model = glm::translate(model, glm::vec3(1.0f, -7.0f, 0.0f));
-            model = glm::translate(model, glm::vec3(1.0f, 7.0f * inc, 0.0f));
+            model = glm::translate(model, glm::vec3(0.5f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(0.5f, 7.0f * inc, 0.0f));
             //model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
             lightingShader.setMat4("model", model);
             glBindVertexArray(VAO7);
@@ -883,7 +883,125 @@ int main()
             glBindVertexArray(VAO8);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
-        else if (inc >= 0.6 && inc < 1.0){
+        else if (inc >= 0.6 && inc < 0.8) {
+            inc += 0.00009f;
+            // ESQUINAS
+                // 1
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina1);
+            model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO5);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 2
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina2);
+            model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO6);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 3
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina3);
+            model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO7);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 4
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina4);
+            model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO8);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+        else if (inc >= 0.8 && inc < 0.85){
+            inc += 0.000085f;
+            // RANAS
+               // 1
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setVec3("posRana1", posRana1);
+                lightingShader.setVec3("viewPos", camera.Position);
+
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                // world transformation
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posRana1);
+                model = glm::translate(model, glm::vec3(0.0f, -7.0f, 0.0f));
+                model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+                lightingShader.setMat4("model", model);
+                // render cube
+                glBindVertexArray(VAO1);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 2
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posRana2);
+                model = glm::translate(model, glm::vec3(0.0f, -7.0f, 0.0f));
+                model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO2);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 3
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posRana3);
+                model = glm::translate(model, glm::vec3(0.0f, -7.0f, 0.0f));
+                model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO3);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 4
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posRana4);
+                model = glm::translate(model, glm::vec3(0.0f, -7.0f, 0.0f));
+                model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO4);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
             // ESQUINAS
                 // 1
                 lightingShader.use();
@@ -937,187 +1055,247 @@ int main()
                 glBindVertexArray(VAO8);
                 glDrawArrays(GL_TRIANGLES, 0, 36);
         }
+        else{
+        //else if (inc >= 1.05 && inc < 1.8) {
         // RANAS
-       // 1
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("posRana1", posRana1);
-        lightingShader.setVec3("viewPos", camera.Position);
+               // 1
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setVec3("posRana1", posRana1);
+               lightingShader.setVec3("viewPos", camera.Position);
 
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        // world transformation
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posRana1);
-        model = glm::translate(model, glm::vec3(0.0f, -3.5f, 0.0f));
-        lightingShader.setMat4("model", model);
-        // render cube
-        glBindVertexArray(VAO1);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               // world transformation
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posRana1);
+               model = glm::translate(model, glm::vec3(0.0f, -4.5f, 0.0f));
+              // model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+               lightingShader.setMat4("model", model);
+               // render cube
+               glBindVertexArray(VAO1);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 2
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posRana2);
-        model = glm::translate(model, glm::vec3(0.0f, -3.5f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO2);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+               // 2
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posRana2);
+               model = glm::translate(model, glm::vec3(0.0f, -4.5f, 0.0f));
+               //model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO2);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 3
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posRana3);
-        model = glm::translate(model, glm::vec3(0.0f, -3.5f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO3);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+               // 3
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posRana3);
+               model = glm::translate(model, glm::vec3(0.0f, -4.5f, 0.0f));
+               //model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO3);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 4
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posRana4);
-        model = glm::translate(model, glm::vec3(0.0f, -3.5f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO4);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+               // 4
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.5f, 0.8f, 0.8f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posRana4);
+               model = glm::translate(model, glm::vec3(0.0f, -4.5f, 0.0f));
+              // model = glm::translate(model, glm::vec3(0.0f, 3.0f * inc, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO4);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        // ESQUINAS
+                // 1
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posEsquina1);
+               model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO5);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
+
+               // 2
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posEsquina2);
+               model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO6);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
+
+               // 3
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posEsquina3);
+               model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO7);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
+
+               // 4
+               lightingShader.use();
+               lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+               lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+               lightingShader.setMat4("projection", projection);
+               lightingShader.setMat4("view", view);
+               model = glm::mat4(1.0f);
+               model = glm::translate(model, posEsquina4);
+               model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+               lightingShader.setMat4("model", model);
+               glBindVertexArray(VAO8);
+               glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
 
        
 
-        // ASIENTOS
-        // 1
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posAsiento1);
-        model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO9);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// ASIENTOS
+        //// 1
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posAsiento1);
+        //model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO9);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 2
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posAsiento2);
-        model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO10);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 2
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posAsiento2);
+        //model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO10);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 3
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posAsiento3);
-        model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO11);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 3
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posAsiento3);
+        //model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO11);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 4
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posAsiento4);
-        model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO12);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 4
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.8f, 0.7f, 0.5f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posAsiento4);
+        //model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO12);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // ZANAHORIAS
-        // 1
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posZanahoria1);
-        model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO13);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// ZANAHORIAS
+        //// 1
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posZanahoria1);
+        //model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO13);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 2
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posZanahoria2);
-        model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO14);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 2
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posZanahoria2);
+        //model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO14);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 3
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posZanahoria2);
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0, 1.0, 0.0));
-        model = glm::translate(model, glm::vec3(5.0f, -2.0f, 5.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO15);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 3
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posZanahoria2);
+        //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0, 1.0, 0.0));
+        //model = glm::translate(model, glm::vec3(5.0f, -2.0f, 5.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO15);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // 4
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posZanahoria2);
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0, 1.0, 0.0));
-        model = glm::translate(model, glm::vec3(-5.0f, -2.0f, 5.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO16);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// 4
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.9f, 0.5f, 0.1f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posZanahoria2);
+        //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0, 1.0, 0.0));
+        //model = glm::translate(model, glm::vec3(-5.0f, -2.0f, 5.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO16);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // CENTRO
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.3f, 0.5f, 0.9f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posCentro);
-        model = glm::translate(model, glm::vec3(0.0f, -4.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO17);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //// CENTRO
+        //lightingShader.use();
+        //lightingShader.setVec3("objectColor", 0.3f, 0.5f, 0.9f);
+        //lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        //lightingShader.setMat4("projection", projection);
+        //lightingShader.setMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, posCentro);
+        //model = glm::translate(model, glm::vec3(0.0f, -4.0f, 0.0f));
+        //lightingShader.setMat4("model", model);
+        //glBindVertexArray(VAO17);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

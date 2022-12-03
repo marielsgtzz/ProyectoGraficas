@@ -654,6 +654,7 @@ int main()
 
     // render loop
     // -----------
+    float inc = 0.0;
     while (!glfwWindowShouldClose(window))
     {
 
@@ -707,7 +708,235 @@ int main()
         glBindVertexArray(VAOs);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
+        // be sure to activate shader when setting uniforms/drawing objects
+        lightingShader.use();
+        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("lightPos", lightPos);
+        lightingShader.setVec3("viewPos", camera.Position);
 
+        /*
+           Here we set all the uniforms for the 5/6 types of lights we have. We have to set them manually and index
+           the proper PointLight struct in the array to set each uniform variable. This can be done more code-friendly
+           by defining light types as classes and set their values in there, or by using a more efficient uniform approach
+           by using 'Uniform buffer objects', but that is something we'll discuss in the 'Advanced GLSL' tutorial.
+        */
+        // directional light
+        lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+        lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+        lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+
+        // spotLight
+        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("camLightPos", camLightPos);
+        lightingShader.setVec3("viewPos", camera.Position);
+
+        // Foco omnidimensional derecha
+        lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+        lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[0].constant", 1.0f);
+        lightingShader.setFloat("pointLights[0].linear", 0.09);
+        lightingShader.setFloat("pointLights[0].quadratic", 0.032);
+
+        // Foco omnidimensional izquierda
+        lightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+        lightingShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[1].constant", 1.0f);
+        lightingShader.setFloat("pointLights[1].linear", 0.09);
+        lightingShader.setFloat("pointLights[1].quadratic", 0.032);
+
+        // Foco omnidimensional centro
+        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("focoLightPos", focoLightPos);
+        lightingShader.setVec3("viewPos", camera.Position);
+        lightingShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[2].constant", 1.0f);
+        lightingShader.setFloat("pointLights[2].linear", 0.09);
+        lightingShader.setFloat("pointLights[2].quadratic", 0.032);
+
+        // view/projection transformations
+        projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view = camera.GetViewMatrix();
+        lightingShader.setMat4("projection", projection);
+        lightingShader.setMat4("view", view);
+
+        // also draw the lamp object(s)
+        //REFLECTOR MOVIBLE
+        lightCubeShader.use();
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model);
+
+        // we now draw as many light bulbs as we have point lights.
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        //REFLECTOR CAMARA
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, camLightPos);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model);
+
+        // we now draw as many light bulbs as we have point lights.
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        //FOCO CENTRO
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, focoLightPos);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model);
+
+        // we now draw as many light bulbs as we have point lights.
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        //FOCOS ESTATICOS
+        for (unsigned int i = 0; i < 2; i++)
+        {
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+            lightCubeShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
+
+        ImGui::Render();
+        ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+
+        if (inc >= 0 && inc < 0.6) {
+            inc += 0.0002f;
+            // ESQUINAS
+            // 1
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina1);
+            model = glm::translate(model, glm::vec3(1.0f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(1.0f, 7.0f*inc, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO5);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 2
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina2);
+            model = glm::translate(model, glm::vec3(-1.0f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(-1.0f, 7.0f * inc, 0.0f));
+            //model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO6);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 3
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina3);
+            model = glm::translate(model, glm::vec3(1.0f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(1.0f, 7.0f * inc, 0.0f));
+            //model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO7);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+            // 4
+            lightingShader.use();
+            lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+            lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+            lightingShader.setMat4("projection", projection);
+            lightingShader.setMat4("view", view);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, posEsquina4);
+            model = glm::translate(model, glm::vec3(-0.5f, -7.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(-0.5f, 7.0f * inc, 0.0f));
+            //model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+            lightingShader.setMat4("model", model);
+            glBindVertexArray(VAO8);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+        else if (inc >= 0.6 && inc < 1.0){
+            // ESQUINAS
+                // 1
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posEsquina1);
+                model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO5);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 2
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posEsquina2);
+                model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO6);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 3
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posEsquina3);
+                model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO7);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+
+                // 4
+                lightingShader.use();
+                lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
+                lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+                lightingShader.setMat4("projection", projection);
+                lightingShader.setMat4("view", view);
+                model = glm::mat4(1.0f);
+                model = glm::translate(model, posEsquina4);
+                model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
+                lightingShader.setMat4("model", model);
+                glBindVertexArray(VAO8);
+                glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         // RANAS
        // 1
         lightingShader.use();
@@ -767,58 +996,7 @@ int main()
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
-        // ESQUINAS
-        // 1
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posEsquina1);
-        model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO5);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // 2
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posEsquina2);
-        model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO6);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // 3
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posEsquina3);
-        model = glm::translate(model, glm::vec3(1.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO7);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // 4
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 0.37f, 0.39f, 0.38f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, posEsquina4);
-        model = glm::translate(model, glm::vec3(-1.0f, -3.0f, 0.0f));
-        lightingShader.setMat4("model", model);
-        glBindVertexArray(VAO8);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+       
 
         // ASIENTOS
         // 1
@@ -940,119 +1118,6 @@ int main()
         lightingShader.setMat4("model", model);
         glBindVertexArray(VAO17);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // be sure to activate shader when setting uniforms/drawing objects
-        lightingShader.use();
-        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("lightPos", lightPos);
-        lightingShader.setVec3("viewPos", camera.Position);
-
-        /*
-           Here we set all the uniforms for the 5/6 types of lights we have. We have to set them manually and index
-           the proper PointLight struct in the array to set each uniform variable. This can be done more code-friendly
-           by defining light types as classes and set their values in there, or by using a more efficient uniform approach
-           by using 'Uniform buffer objects', but that is something we'll discuss in the 'Advanced GLSL' tutorial.
-        */
-        // directional light
-        lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-        lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-        lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-        lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-
-        // spotLight
-        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("camLightPos", camLightPos);
-        lightingShader.setVec3("viewPos", camera.Position);
-
-        // Foco omnidimensional derecha
-        lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-        lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-        lightingShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-        lightingShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-        lightingShader.setFloat("pointLights[0].constant", 1.0f);
-        lightingShader.setFloat("pointLights[0].linear", 0.09);
-        lightingShader.setFloat("pointLights[0].quadratic", 0.032);
-
-        // Foco omnidimensional izquierda
-        lightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-        lightingShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-        lightingShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-        lightingShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-        lightingShader.setFloat("pointLights[1].constant", 1.0f);
-        lightingShader.setFloat("pointLights[1].linear", 0.09);
-        lightingShader.setFloat("pointLights[1].quadratic", 0.032);
-
-        // Foco omnidimensional centro
-        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("focoLightPos", focoLightPos);
-        lightingShader.setVec3("viewPos", camera.Position);
-        lightingShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
-        lightingShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
-        lightingShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
-        lightingShader.setFloat("pointLights[2].constant", 1.0f);
-        lightingShader.setFloat("pointLights[2].linear", 0.09);
-        lightingShader.setFloat("pointLights[2].quadratic", 0.032);
-
-        // view/projection transformations
-        projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view = camera.GetViewMatrix();
-        lightingShader.setMat4("projection", projection);
-        lightingShader.setMat4("view", view);
-
-        // also draw the lamp object(s)
-        //REFLECTOR MOVIBLE
-        lightCubeShader.use();
-        lightCubeShader.setMat4("projection", projection);
-        lightCubeShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-        lightCubeShader.setMat4("model", model);
-
-        // we now draw as many light bulbs as we have point lights.
-        glBindVertexArray(lightCubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        //REFLECTOR CAMARA
-        lightCubeShader.setMat4("projection", projection);
-        lightCubeShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, camLightPos);
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-        lightCubeShader.setMat4("model", model);
-
-        // we now draw as many light bulbs as we have point lights.
-        glBindVertexArray(lightCubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        //FOCO CENTRO
-        lightCubeShader.setMat4("projection", projection);
-        lightCubeShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, focoLightPos);
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-        lightCubeShader.setMat4("model", model);
-
-        // we now draw as many light bulbs as we have point lights.
-        glBindVertexArray(lightCubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        //FOCOS ESTATICOS
-        for (unsigned int i = 0; i < 2; i++)
-        {
-            model = glm::mat4(1.0f);
-            model = glm::translate(model, pointLightPositions[i]);
-            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-            lightCubeShader.setMat4("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-
-
-        ImGui::Render();
-        ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

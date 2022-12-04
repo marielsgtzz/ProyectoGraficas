@@ -1,0 +1,27 @@
+﻿  proyecto.cpp
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\Dependencies\shaders\shader.h(56,40): warning C4101: 'e': variable local sin referencia
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(683,28): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(745,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(746,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(754,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(755,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(766,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(767,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2031,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2032,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2036,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2037,19): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2039,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2040,13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2042,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2043,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\BaseOpenGL\proyecto.cpp(2052,31): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  BaseOpenGL.vcxproj -> C:\Users\MGUTIERRZA\Desktop\ProyectoGraficas\P2.3\Visualizacion3D\Debug\BaseOpenGL.exe
